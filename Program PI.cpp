@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// Funkcja rysuje planszę gry w kółko i krzyżyk
-//---------------------------------------------
 void board(char t[])
 {
     for (int i = 1; i <= 9; i++)
@@ -18,10 +16,6 @@ void board(char t[])
         else cout << endl;
     }
 }
-
-// Funkcja zwraca true, jeśli nastąpiła
-// wygrana danego zawodnika
-//-------------------------------------
 bool win(char t[], char g)
 {
     bool test;
@@ -43,9 +37,6 @@ bool win(char t[], char g)
     return false;
 }
 
-// Funkcja zwraca true, jeśli na planszy nie ma już
-// żadnego wolnego pola na ruch.
-//-------------------------------------------------
 bool draw(char t[])
 {
     for (int i = 1; i <= 9; i++)
@@ -54,10 +45,6 @@ bool draw(char t[])
     cout << "\nREMIS !!!\n\n";
     return true;
 }
-
-// Funkcja umożliwia ruch gracza
-// Po ruchu następuje zamiana gracza
-//------------------------------------
 void move(char t[], char& player)
 {
     int r;
