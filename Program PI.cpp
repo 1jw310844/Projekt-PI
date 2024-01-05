@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 #include <cassert>
 
@@ -6,7 +6,7 @@ using namespace std;
 
 // Funkcja rysuje planszę gry w kółko i krzyżyk
 //---------------------------------------------
-void plansza(char t[])
+void board(char t[])
 {
     for (int i = 1; i <= 9; i++)
     {
@@ -22,7 +22,7 @@ void plansza(char t[])
 // Funkcja zwraca true, jeśli nastąpiła
 // wygrana danego zawodnika
 //-------------------------------------
-bool wygrana(char t[], char g)
+bool win(char t[], char g)
 {
     bool test;
     int i;
@@ -36,7 +36,7 @@ bool wygrana(char t[], char g)
     test |= ((t[3] == g) && (t[5] == g) && (t[7] == g));
     if (test)
     {
-        plansza(t);
+        board(t);
         cout << "\nGRACZ " << g << " WYGRYWA!!!\n\n";
         return true;
     }
@@ -46,11 +46,11 @@ bool wygrana(char t[], char g)
 // Funkcja zwraca true, jeśli na planszy nie ma już
 // żadnego wolnego pola na ruch.
 //-------------------------------------------------
-bool remis(char t[])
+bool draw(char t[])
 {
     for (int i = 1; i <= 9; i++)
         if (t[i] == ' ') return false;
-    plansza(t);
+    board(t);
     cout << "\nREMIS !!!\n\n";
     return true;
 }
@@ -58,16 +58,16 @@ bool remis(char t[])
 // Funkcja umożliwia ruch gracza
 // Po ruchu następuje zamiana gracza
 //------------------------------------
-void ruch(char t[], char& gracz)
+void move(char t[], char& player)
 {
     int r;
 
-    plansza(t);
-    cout << "\nGRACZ " << gracz << " : Twoj ruch : ";
+    board(t);
+    cout << "\nGRACZ " << player << " : Twoj ruch : ";
     cin >> r;
     cout << "-----------------------\n\n";
-    if ((r >= 1) && (r <= 9) && (t[r] == ' ')) t[r] = gracz;
-    gracz = (gracz == 'O') ? 'X' : 'O';
+    if ((r >= 1) && (r <= 9) && (t[r] == ' ')) t[r] = player;
+    player = (player == 'O') ? 'X' : 'O';
 }
 
 int main()
@@ -80,7 +80,7 @@ int main()
             "======================================\n\n";
         for (int i = 1; i <= 9; i++) p[i] = ' ';
         g = 'O';
-        while (!wygrana(p, 'X') && !wygrana(p, 'O') && !remis(p)) ruch(p, g);
+        while (!win(p, 'X') && !win(p, 'O') && !draw(p)) move(p, g);
         cout << "Jeszcze raz ? (T = TAK) : ";
         cin >> w;
         cout << "\n\n\n";
