@@ -59,17 +59,17 @@ void move(char t[], char& player)
 
 int main()
 {
-    char p[10], g, w;
+    char p[10], g, again;
 
     do
     {
-        cout << "Gra w Kolko i Krzyzyk dla dwoch graczy\n"
+        cout << "Gra w Kolko i Krzyzyk dla dwoch graczy - Jakub Wesoły 310844, Podstawy Informatyki\n"
             "======================================\n\n";
         for (int i = 1; i <= 9; i++) p[i] = ' ';
         g = 'O';
         while (!win(p, 'X') && !win(p, 'O') && !draw(p)) move(p, g);
         cout << "Jeszcze raz ? (T = TAK) : ";
-        cin >> w;
+        cin >> again;
         cout << "\n\n\n";
-    } while ((w == 'T') || (w == 't'));
+    } while ((again == 'T') || (again == 't'));
 }
