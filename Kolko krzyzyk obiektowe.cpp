@@ -71,7 +71,7 @@ int main() {
         gameBoard.printBoard();
 
         int row, col;
-        cout << "Gracz " << gameBoard.checkWinner() << ", wykonaj ruch (wiersz , kolumna): " <<endl;
+        cout << "Graczu " << gameBoard.checkWinner() << ", wykonaj ruch (wiersz , kolumna): " <<endl;
         cout << "Podaj wiersz (0,1,2): " << endl;
         cin >> row;
         cout << "Podaj kolumne (0,1,2): " << endl;
