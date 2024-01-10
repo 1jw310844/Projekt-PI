@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -50,7 +50,7 @@ public:
 
     bool isBoardFull() const {
         for (const auto& row : board) { //pracujemy z referencja a nie kopią
-            for (char cell : row) {
+            for (char cell : row) {   //prześledzi wiersze czy są zapełnione
                 if (cell == ' ') {
                     return false; // Board is not full
                 }
@@ -71,8 +71,11 @@ int main() {
         gameBoard.printBoard();
 
         int row, col;
-        cout << "Gracz " << gameBoard.checkWinner() << ", wykonaj ruch (wiersz , kolumna): ";
-        cin >> row >> col;
+        cout << "Gracz " << gameBoard.checkWinner() << ", wykonaj ruch (wiersz , kolumna): " <<endl;
+        cout << "Podaj wiersz (0,1,2): " << endl;
+        cin >> row;
+        cout << "Podaj kolumne (0,1,2): " << endl;
+        cin>> col;
 
         if (gameBoard.makeMove(row, col)) {
             if (gameBoard.checkWinner() != ' ') {
