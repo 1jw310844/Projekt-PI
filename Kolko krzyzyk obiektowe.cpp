@@ -4,7 +4,7 @@ using namespace std;
 
 class Board {
 public:
-    Board() : board(3, vector<char>(3, ' ')), currentPlayer('X') {} //vector dynamiczna tablica. Początkowy ruch "X"
+    Board() : board(3, vector<char>(3, ' ')), currentPlayer('X') {}
 
     void printBoard() const {
         for (const auto& row : board) {
@@ -17,46 +17,45 @@ public:
     }
 
     bool makeMove(int row, int col) {
-        if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row][col] != ' ') { //Nieprawidłowy ruch
-            return false; // Invalid move
+        if (row < 0 || row >= 3 || col < 0 || col >= 3 || board[row][col] != ' ') { 
+            return false; 
         }
 
-        board[row][col] = currentPlayer; //służy do aktualizacji planszy gry po wykonaniu ruchu przez gracza
-        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; //Sprawdza, czy aktualny gracz to 'X'.
-        return true; // Valid move
+        board[row][col] = currentPlayer; 
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; 
+        return true; 
     }
 
     char checkWinner() const {
-        // Check rows, columns, and diagonals
         for (int i = 0; i < 3; ++i) {
             if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ') {
-                return board[i][0]; // Row
+                return board[i][0]; 
             }
             if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ') {
-                return board[0][i]; // Column
+                return board[0][i]; 
             }
         }
 
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ') {
-            return board[0][0]; // Diagonal
+            return board[0][0];
         }
 
         if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ') {
-            return board[0][2]; // Diagonal
+            return board[0][2];
         }
 
-        return ' '; // No winner yet
+        return ' '; 
     }
 
     bool isBoardFull() const {
-        for (const auto& row : board) { //pracujemy z referencja a nie kopią
-            for (char cell : row) {   //prześledzi wiersze czy są zapełnione
+        for (const auto& row : board) { 
+            for (char cell : row) {   
                 if (cell == ' ') {
-                    return false; // Board is not full
+                    return false; 
                 }
             }
         }
-        return true; // Board is full
+        return true; 
     }
 
 private:
